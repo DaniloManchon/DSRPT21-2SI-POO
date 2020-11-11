@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AdmServlet", value = "/admn")
+@WebServlet(name = "AdmServlet", value = "/adm")
 public class AdmServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String button = request.getParameter("button");
@@ -17,7 +17,6 @@ public class AdmServlet extends HttpServlet {
         if(button.equalsIgnoreCase("Cadastrar Usuario")){
             dispatcher = request.getRequestDispatcher("cadastroUsuario.html");
         }else{
-            //TODO criar cadastro de pistas
             dispatcher = request.getRequestDispatcher("cadastroPista.html");
         }
         dispatcher.forward(request,response);
