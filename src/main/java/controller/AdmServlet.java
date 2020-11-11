@@ -17,6 +17,7 @@ public class AdmServlet extends HttpServlet {
         if(button.equalsIgnoreCase("Cadastrar Usuario")){
             dispatcher = request.getRequestDispatcher("cadastroUsuario.html");
         }else{
+            //TODO criar cadastro de pistas
             dispatcher = request.getRequestDispatcher("cadastroPista.html");
         }
         dispatcher.forward(request,response);
