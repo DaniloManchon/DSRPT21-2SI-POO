@@ -21,7 +21,7 @@ public class PistasDAO {
         connection = new ConexaoDB().conectar();
         try {
             ps = connection.prepareStatement(sql);
-            ps.setInt(1, );
+            ps.setInt(1, 1);
             ps.execute();
             System.out.println("usuario cadastrado");
             sucesso = true;
@@ -34,4 +34,3 @@ public class PistasDAO {
     }
 }
 
-}
