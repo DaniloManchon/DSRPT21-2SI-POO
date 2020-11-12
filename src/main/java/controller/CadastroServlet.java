@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "CadastroServlet")
+@WebServlet(name = "CadastroServlet", value = "/cadastro")
 public class CadastroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String button = request.getParameter("button");
@@ -28,6 +28,7 @@ public class CadastroServlet extends HttpServlet {
         if(dao.logar(Integer.parseInt(id),password) != null){
             try {
                 dao.cadastrar(new Usuario(Integer.parseInt(id), name, password, userType));
+                dispatcher = request.getRequestDispatcher("cadastroRealizado.html");
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }

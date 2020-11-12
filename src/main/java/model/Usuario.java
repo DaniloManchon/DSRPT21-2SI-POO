@@ -1,10 +1,10 @@
 package model;
 
 public class Usuario {
-    int id;
-    String name;
-    String password;
-    String userType;
+    private int id;
+    private String name;
+    private String password;
+    private String userType;
 
     public Usuario(int id, String name, String password, String userType) {
         this.id = id;
@@ -33,15 +33,8 @@ public class Usuario {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
 }
