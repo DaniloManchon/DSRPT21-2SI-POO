@@ -11,4 +11,4 @@ interagir com a aplicação. O usuário administrador da aplicação também é 
 cadastrar os usuários clientes.
 
 Desenhe esquematicamente a arquitetura para atender a disciplina de POO
-![](diagram\DSRPT21-2SI-POO_diagram)
+![](diagram/DSRPT21-2SI-POO_diagram.png)
