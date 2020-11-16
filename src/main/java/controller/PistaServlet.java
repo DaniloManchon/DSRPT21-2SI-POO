@@ -31,8 +31,8 @@ public class PistaServlet extends HttpServlet {
 
         PistasDAO dao = new PistasDAO();
 
-        if(dao.validar(Integer.parseInt(id)) != null){
-            if (quesInfo.equalsIgnoreCase("sim")){
+        if(dao.validar(Integer.parseInt(id)) == null){
+            if (quesInfo.equalsIgnoreCase("yes")){
                 try {
                     dao.cadastrarComInfo(new Pistas(Integer.parseInt(id), latitude, longitude, elevacao, nome, cidade, pais, info));
                     dispatcher = request.getRequestDispatcher("cadastroPistaRealizado.html");

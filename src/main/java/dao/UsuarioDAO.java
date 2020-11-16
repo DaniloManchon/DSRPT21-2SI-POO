@@ -23,7 +23,7 @@ public class UsuarioDAO {
             ps.setString(2, password);
             rs = ps.executeQuery();
             if (rs.next()) {
-                usuario = new Usuario(id, rs.getString("nome"), password, rs.getString("tipoDeUsuario"));
+                usuario = new Usuario(id, rs.getString("name"), password, rs.getString("usertype"));
                 connection.close();
             }
         } catch (SQLException throwables) {

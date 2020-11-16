@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro Usuario</title>
+</head>
+<body>
+    <h1>Cadastro de Usuario</h1>
+    <hr>
+    <form action="cadastro" method="POST">
+        ID: <br />
+        <input type="text" name="id"> <br />
+        Nome: <br />
+        <input type="text" name="name"> <br />
+        Senha: <br />
+        <input type="password" name="password"> <br />
+        Tipo de Usuario: <br />
+        <input type="radio" id="adm" name="userType" value="adm"> <label for="adm">Administrador</label>
+        <input type="radio" id="cli" name="userType" value="cli" checked> <label for="cli">Cliente</label>
+        <br />
+        <input type="submit" name="button" value="Cadastrar">
+    </form>
+</body>
+</html>

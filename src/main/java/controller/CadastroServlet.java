@@ -25,10 +25,11 @@ public class CadastroServlet extends HttpServlet {
 
         UsuarioDAO dao = new UsuarioDAO();
 
-        if(dao.logar(Integer.parseInt(id),password) != null){
+        if(dao.logar(Integer.parseInt(id),password) == null){
             try {
                 dao.cadastrar(new Usuario(Integer.parseInt(id), name, password, userType));
                 dispatcher = request.getRequestDispatcher("cadastroRealizado.html");
+                dispatcher.forward(request,response);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
