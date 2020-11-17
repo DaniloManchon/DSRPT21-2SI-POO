@@ -81,7 +81,7 @@ public class PistasDAO {
             ps.setString(5, pistas.getNome());
             ps.setString(6, pistas.getCidade());
             ps.setString(7, pistas.getPais());
-            ps.setString(8, "");
+            ps.setString(8, "-");
             ps.execute();
             System.out.println("Pista sem info cadastrada");
             sucesso = true;

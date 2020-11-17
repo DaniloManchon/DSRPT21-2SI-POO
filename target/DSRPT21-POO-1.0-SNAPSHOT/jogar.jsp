@@ -13,14 +13,32 @@
     <title>Jogar</title>
 </head>
 <body>
-<table>
     <%
-        PistasDAO dao = new PistasDAO();
-        List<Pistas> lista = dao.listarPistas();
+    PistasDAO dao = new PistasDAO();
+    List<Pistas> lista = dao.listarPistas();
+    %>
+    <%
+        for (Pistas pista : lista ) {
+    %>
+    <button><%=pista.getNome() %></button>
+    <%
+        }
+    %>
+    <br /> <br />
+<table border="black"> Tabelo
+    <tr>
+        <td>Latitude: </td>
+        <td>Longitude: </td>
+        <td>Elevação: </td>
+        <td>Nome: </td>
+        <td>Cidade: </td>
+        <td>Pais: </td>
+        <td>Info: </td>
+    </tr>
+    <%
         for (Pistas pista : lista ) {
     %>
     <tr>
-        <td><%=pista.getId() %></td>
         <td><%=pista.getLatitude() %></td>
         <td><%=pista.getLongitude() %></td>
         <td><%=pista.getElevacao() %></td>
