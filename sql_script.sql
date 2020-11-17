@@ -21,3 +21,4 @@ insert INTO dsrpt_usuario(id,name,password,userType) values (1, 'admin','a','adm
 commit;
 select * from dsrpt_usuario;
 select * from dsrpt_pistas;
+UPDATE dsrpt_pistas SET info = '-' WHERE info is null;
