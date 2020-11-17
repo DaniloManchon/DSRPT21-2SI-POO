@@ -65,6 +65,7 @@ public class PistasDAO {
         }
         return sucesso;
     }
+
     public boolean cadastrarSemInfo(Pistas pistas) throws SQLException {
         boolean sucesso = false;
         final String sql = "insert into dsrpt_pistas(id, latitude, longitude, elevacao, nome, cidade, pais, info) values(?,?,?,?,?,?,?,?)";
@@ -89,5 +90,32 @@ public class PistasDAO {
         }
         return sucesso;
     }
+
+    public Pistas listarPistas(){
+        Pistas pistas = null;
+        final String sql = "select * from dsrpt_pistas";
+        connection = new ConexaoDB().conectar();
+        try {
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                pistas = new Pistas(
+                        rs.getInt("id"),
+                        rs.getString("latitude"),
+                        rs.getString("longitude"),
+                        rs.getString("elevacao"),
+                        rs.getString("nome"),
+                        rs.getString("cidade"),
+                        rs.getString("pais"),
+                        rs.getString("info")
+                );
+                connection.close();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return pistas;
+    }
+    
 }
 
