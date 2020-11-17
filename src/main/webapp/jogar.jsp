@@ -16,15 +16,14 @@
     <%
     PistasDAO dao = new PistasDAO();
     List<Pistas> lista = dao.listarPistas();
-    %>
-    <%
         for (Pistas pista : lista ) {
     %>
     <button><%=pista.getNome() %></button>
     <%
         }
     %>
-    <br /> <br />
+    <br />
+    <br />
 <table border="black"> Tabelo
     <tr>
         <td>Latitude: </td>
