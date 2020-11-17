@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class PistasDAO {
     private Connection connection;
@@ -91,8 +92,9 @@ public class PistasDAO {
         return sucesso;
     }
 
-    public Pistas listarPistas(){
+    public List<Pistas> listarPistas(){
         Pistas pistas = null;
+        List<Pistas> lista = null;
         final String sql = "select * from dsrpt_pistas";
         connection = new ConexaoDB().conectar();
         try {
@@ -109,12 +111,13 @@ public class PistasDAO {
                         rs.getString("pais"),
                         rs.getString("info")
                 );
+                lista.add(pistas);
                 connection.close();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return pistas;
+        return lista;
     }
 
 }
