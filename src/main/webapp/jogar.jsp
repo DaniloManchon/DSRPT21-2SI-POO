@@ -11,28 +11,37 @@
 <html>
 <head>
     <title>Jogar</title>
+    <style>
+        table, th, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
+<br />
     <%
     PistasDAO dao = new PistasDAO();
     List<Pistas> lista = dao.listarPistas();
+    int i =0;
         for (Pistas pista : lista ) {
     %>
-    <button><%=pista.getNome() %></button>
+    <button id=<%=i++ %> onclick="idIncrement()"><%=pista.getNome() %></button>
     <%
         }
     %>
     <br />
     <br />
-<table border="black"> Tabelo
+<table>
+    <caption><h2>Tabela de Informações</h2></caption>
     <tr>
-        <td>Latitude: </td>
-        <td>Longitude: </td>
-        <td>Elevação: </td>
-        <td>Nome: </td>
-        <td>Cidade: </td>
-        <td>Pais: </td>
-        <td>Info: </td>
+        <th>Latitude: </th>
+        <th>Longitude: </th>
+        <th>Elevação: </th>
+        <th>Nome: </th>
+        <th>Cidade: </th>
+        <th>Pais: </th>
+        <th>Info: </th>
     </tr>
     <%
         for (Pistas pista : lista ) {
