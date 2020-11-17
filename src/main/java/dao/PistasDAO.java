@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PistasDAO {
@@ -93,14 +94,14 @@ public class PistasDAO {
     }
 
     public List<Pistas> listarPistas(){
-        Pistas pistas = null;
-        List<Pistas> lista = null;
+        Pistas pistas;
+        List<Pistas> lista = new ArrayList<>();
         final String sql = "select * from dsrpt_pistas";
         connection = new ConexaoDB().conectar();
         try {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()){
                 pistas = new Pistas(
                         rs.getInt("id"),
                         rs.getString("latitude"),
@@ -112,8 +113,8 @@ public class PistasDAO {
                         rs.getString("info")
                 );
                 lista.add(pistas);
-                connection.close();
             }
+            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
