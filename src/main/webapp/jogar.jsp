@@ -17,16 +17,38 @@
             border-collapse: collapse;
         }
     </style>
+    <script>
+        var arrayEscolha = [];
+
+        function is_same(){
+            if (arrayEscolha.includes("0",0) && arrayEscolha.includes("1",1)){
+                window.location.href = "resultado.jsp";
+                console.log("YEE");
+            }else {
+                alert("Droga... Não foi dessa vez! :(");
+                console.log("NAHH");
+            }
+        }
+        function restart(){
+            while(arrayEscolha.length > 0) {
+                arrayEscolha.pop();
+            }
+        }
+    </script>
 </head>
 <body>
+<button onclick="is_same()" value="check">Check</button>
+<button onclick="restart()" value="restart">Restart</button>
+<br />
 <br />
     <%
     PistasDAO dao = new PistasDAO();
     List<Pistas> lista = dao.listarPistas();
-    int i =0;
+    int i = 0;
+    int j = 0;
         for (Pistas pista : lista ) {
     %>
-    <button id=<%=i++ %> onclick="idIncrement()"><%=pista.getNome() %></button>
+    <button id='<%=i++ %>' value='<%=j++ %>' onclick="arrayEscolha.push(value)"> <%=pista.getNome() %> </button>
     <%
         }
     %>
