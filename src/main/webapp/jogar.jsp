@@ -18,26 +18,38 @@
         }
     </style>
     <script>
-        var arrayEscolha = [];
-
-        function is_same(){
-            if (arrayEscolha.includes("0",0) && arrayEscolha.includes("1",1)){
+        var a = ["0","1"];
+        var b = [];
+        function isEqual() {
+            // if length is not equal
+            if(a.length!=b.length)
+                return false;
+            else
+            {
+                // comapring each element of array
+                for(var i=0;i<a.length;i++)
+                    if(a[i]!=b[i])
+                        return false;
+                return true;
+            }
+        }
+        var v = isEqual();
+        function goTO(){
+            if (isEqual() === true){
                 window.location.href = "resultado.jsp";
-                console.log("YEE");
-            }else {
+            }else{
                 alert("Droga... Não foi dessa vez! :(");
-                console.log("NAHH");
             }
         }
         function restart(){
-            while(arrayEscolha.length > 0) {
-                arrayEscolha.pop();
+            while(b.length > 0) {
+                b.pop();
             }
         }
     </script>
 </head>
 <body>
-<button onclick="is_same()" value="check">Check</button>
+<button onclick="goTO()" value="check">Check</button>
 <button onclick="restart()" value="restart">Restart</button>
 <br />
 <br />
@@ -48,7 +60,7 @@
     int j = 0;
         for (Pistas pista : lista ) {
     %>
-    <button id='<%=i++ %>' value='<%=j++ %>' onclick="arrayEscolha.push(value)"> <%=pista.getNome() %> </button>
+    <button id='<%=i++ %>' value='<%=j++ %>' onclick="b.push(value)"> <%=pista.getNome() %> </button>
     <%
         }
     %>
