@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PistasDAO {
     private Connection connection;
@@ -79,7 +81,7 @@ public class PistasDAO {
             ps.setString(5, pistas.getNome());
             ps.setString(6, pistas.getCidade());
             ps.setString(7, pistas.getPais());
-            ps.setString(8, "");
+            ps.setString(8, "-");
             ps.execute();
             System.out.println("Pista sem info cadastrada");
             sucesso = true;
@@ -91,14 +93,15 @@ public class PistasDAO {
         return sucesso;
     }
 
-    public Pistas listarPistas(){
-        Pistas pistas = null;
+    public List<Pistas> listarPistas(){
+        Pistas pistas;
+        List<Pistas> lista = new ArrayList<>();
         final String sql = "select * from dsrpt_pistas";
         connection = new ConexaoDB().conectar();
         try {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()){
                 pistas = new Pistas(
                         rs.getInt("id"),
                         rs.getString("latitude"),
@@ -109,13 +112,14 @@ public class PistasDAO {
                         rs.getString("pais"),
                         rs.getString("info")
                 );
-                connection.close();
+                lista.add(pistas);
             }
+            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return pistas;
+        return lista;
     }
-    
+
 }
 

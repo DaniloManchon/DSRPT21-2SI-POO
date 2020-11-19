@@ -25,7 +25,6 @@ public class LoginServlet extends HttpServlet {
 
         if(usuario != null){//user existe
             if(usuario.getUserType().equalsIgnoreCase("cli")){ //usuario é um cliente
-                //TODO projetar a area do cliente
                 dispatcher = request.getRequestDispatcher("jogar.jsp");
             }else { //usuario é um adm
                 dispatcher = request.getRequestDispatcher("menuADM.html");
